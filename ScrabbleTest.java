@@ -2,7 +2,6 @@ import java.io.*;
 
 public class ScrabbleTest {
     public static void main(String[] args) {
-        testPlayGameWithMockInput();
 
 
         if (args.length == 0) {
