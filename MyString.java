@@ -19,9 +19,14 @@ public class MyString {
      * @param c - a character
      * @return the number of times c appears in str
      */
-    public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+    public static int countChar(String str, char c) {
+        int countChar = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i)==c) {
+                countChar++;
+            }
+        }
+        return countChar;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -36,7 +41,19 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
+        String strTest = str1;
+
+        for (int i = 0; i < str2.length(); i++) {
+            if (strTest.length() == 0) {
+                return true;
+            }
+            for (int j = 0; j < strTest.length(); j++) {
+                if (strTest.charAt(j)==str2.charAt(i)) {
+                    strTest = strTest.substring(0, j) + strTest.substring(j+1);
+                }
+            }
+        }
+
         return false;
     }
 
@@ -49,8 +66,14 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) != ' ') {
+                str = str.substring(0, i) + " " + str.substring(i);
+                i++;
+            }
+        }
+
+        return str;
     }
   
     /**
@@ -63,10 +86,34 @@ public class MyString {
      * @param n - the number of letter to select
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
-    public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+     public static String randomStringOfLetters(int n) {
+        String str = "";
+        int asciiChar;
+        for (int i = 0; i < n; i++) {
+            asciiChar = (int)(Math.random() * 26) + 97;
+            while (countChar(str,(char)asciiChar)!=0) {
+                asciiChar = (int)(Math.random() * 26) + 97;
+            }
+            str = insertRandomly((char)asciiChar, str);
+        }
+
+        return str;
     }
+
+    public static String randomStringOfLettersScrabbel(int n) {
+        String str = "";
+        int asciiChar;
+        for (int i = 0; i < n; i++) {
+            asciiChar = (int)(Math.random() * 26) + 97;
+            while (countChar(str,(char)asciiChar)!=0||(char)asciiChar=='a'||(char)asciiChar=='e') {
+                asciiChar = (int)(Math.random() * 26) + 97;
+            }
+            str = insertRandomly((char)asciiChar, str);
+        }
+
+        return str;
+    }
+    
 
     /**
      * Returns a string consisting of the string str1, minus all the characters in the
@@ -78,8 +125,28 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+
+        for (int i = 0; i < str2.length(); i++) {
+         for (int j = 0; j < str1.length(); j++) {
+            
+             if (str2.charAt(i)==str1.charAt(j)) {
+                 str1 = str1.substring(0, j) + str1.substring(j+1);
+                 break;
+             }
+         }
+        }
+         return str1;
+     }
+
+    public static String lowerCase(String str) {
+        String  newString= str;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i)>='A'&&str.charAt(i)<='Z') {
+                newString = newString.substring(0, i) + (char)(str.charAt(i) + 32) + newString.substring(i+1);
+
+            }
+        }
+        return newString;
     }
 
     /**
@@ -91,10 +158,10 @@ public class MyString {
      * @return a string consisting of str with ch inserted somewhere
      */
     public static String insertRandomly(char ch, String str) {
-         // Generate a random index between 0 and str.length()
-         int randomIndex = (int) (Math.random() * (str.length() + 1));
-         // Insert the character at the random index
-         String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
-         return result;
-    }    
+        // Generate a random index between 0 and str.length()
+        int randomIndex = (int) (Math.random() * (str.length() + 1));
+        // Insert the character at the random index
+        String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
+        return result;
+   }    
 }
