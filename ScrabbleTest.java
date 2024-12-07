@@ -3,6 +3,8 @@ import java.io.*;
 public class ScrabbleTest {
     public static void main(String[] args) {
 
+        testPlayHandWithMockInput();
+
         if (args.length == 0) {
             System.out.println("Please provide a specific test to run: isWordInDictionary, wordScore, createHand, playHand, playHandWithMockInput, or playGameWithMockInput.");
             return;
@@ -123,7 +125,7 @@ public class ScrabbleTest {
         
         try {
             Scrabble.playHand("aretiin");
-            
+
             // Verify output
             String output = outContent.toString();
             System.setOut(originalOut); // Reset before printing results
