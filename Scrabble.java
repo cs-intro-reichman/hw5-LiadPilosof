@@ -115,7 +115,7 @@ public class Scrabble {
 				break;
 			}
 			else {
-				if (!MyString.contains(hand, input)) {
+				if (!MyString.subsetOf(input, hand)) {
 					System.out.println("Invalid word. Try again.");
 				}
 				else if (!isWordInDictionary(input)) {
@@ -165,7 +165,7 @@ public class Scrabble {
 		////testScrabbleScore();    
 		////testCreateHands();  
 		////testPlayHands();
-		////playGame();
+		playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
