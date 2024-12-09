@@ -8,6 +8,8 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
+
+        System.out.println(subsetOf("train", "aretiin"));
         //// Put your other tests here.
     }
 
@@ -41,6 +43,11 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
+
+        if (str1.length() > str2.length()) {
+            return false;
+        }
+
         String strTest = str1;
 
         for (int i = 0; i < str2.length(); i++) {
@@ -52,6 +59,10 @@ public class MyString {
                     strTest = strTest.substring(0, j) + strTest.substring(j+1);
                 }
             }
+        }
+
+        if (strTest.length() == 0) {
+            return true;
         }
 
         return false;
