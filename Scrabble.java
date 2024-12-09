@@ -109,11 +109,16 @@ public class Scrabble {
 			// end-of-line characters.
 			String input = in.readString();
 
+			
+
 			if (input.equals(".")) {
 				break;
 			}
 			else {
-				if (!isWordInDictionary(input)) {
+				if (!MyString.contains(hand, input)) {
+					System.out.println("Invalid word. Try again.");
+				}
+				else if (!isWordInDictionary(input)) {
 					System.out.println(" No such word in the dictionary. Try again.");
 				}
 				else {
@@ -128,9 +133,9 @@ public class Scrabble {
 		
 		}
 		if (hand.length() == 0) {
-	        System.out.println("Ran out of letters. Total score: " + score + " points");
+	        System.out.println("Ran out of letters. Total score: " + score + " points\n");
 		} else {
-			System.out.println("End of hand. Total score: " + score + " points");
+			System.out.println("End of hand. Total score: " + score + " points\n");
 		}
 	}
 
@@ -160,7 +165,7 @@ public class Scrabble {
 		////testScrabbleScore();    
 		////testCreateHands();  
 		////testPlayHands();
-		////playGame();
+		playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
