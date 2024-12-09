@@ -133,9 +133,9 @@ public class Scrabble {
 		
 		}
 		if (hand.length() == 0) {
-	        System.out.println("Ran out of letters. Total score: " + score + " points\n");
+	        System.out.println("Ran out of letters. Total score: " + score + " points");
 		} else {
-			System.out.println("End of hand. Total score: " + score + " points\n");
+			System.out.println("End of hand. Total score: " + score + " points");
 		}
 	}
 
